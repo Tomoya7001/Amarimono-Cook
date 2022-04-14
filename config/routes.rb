@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'homes/top'
+  end
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -19,6 +22,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:create, :index, :edit, :update]
   end
 
+  root to: 'public/homes#top'
   namespace :public do
     root to: 'homes#top'
     get '/customers/my_page' => 'customers#show', as: 'my_page'

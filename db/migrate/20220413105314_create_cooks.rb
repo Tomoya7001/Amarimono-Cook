@@ -2,7 +2,6 @@ class CreateCooks < ActiveRecord::Migration[6.1]
   def change
     create_table :cooks do |t|
       #追加カラム
-      t.integer :id, null: false
       t.integer :customer_id, null: false
       t.integer :genre_id, null: false
       t.string :cook_name, null: false
