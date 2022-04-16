@@ -1,0 +1,19 @@
+<h1>レシピ一覧</h1>
+
+<% @cooks.each do |cook| %>
+  <p>料理名</p>
+  <span><%= cook.cook_name %></span>
+
+  <p>画像</p>
+  <% if cook.image.attached? %>
+    <%= image_tag cook.image_id, size: "100x100" %>
+  <% else %>
+    <%= image_tag "noimageフォト", size: "100x100" %>
+  <% end %>
+
+  <p>ジャンル</p>
+  <span><%= cook.genre_id %></span>
+
+  <p>作り方</p>
+  <span><%= cook.introduction %></span>
+<% end %>
