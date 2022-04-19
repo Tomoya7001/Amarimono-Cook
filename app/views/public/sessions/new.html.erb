@@ -1,5 +1,7 @@
 <h2>ログイン</h2>
 
+<%= flash[:notice] %>
+
 <%= form_with model: @customer, url: customer_session_path do |f| %>
   <div class="field">
     <%= f.label :メールアドレス %><br />

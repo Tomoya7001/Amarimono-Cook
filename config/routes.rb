@@ -14,10 +14,13 @@ Rails.application.routes.draw do
   }
 
   root to: 'public/homes#top'
+  get '/search', to: 'searches#search'
 
   namespace :public do
     get 'homes/top'
     get '/public/home/about' => 'homes#about', as: 'about'
+    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
   end
 
   namespace :admin do
@@ -37,6 +40,6 @@ Rails.application.routes.draw do
     end
     resources :genres, only: [:index, :show]
     resources :bookmarks, only: [:index]
-    resources :customers, only: [:edit, :index]
+    resources :customers, only: [:edit, :index, :update]
   end
 end

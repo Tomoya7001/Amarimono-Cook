@@ -1,0 +1,5 @@
+<%= form_with url: search_path, method: :get, local: true do |f| %>
+  <%= f.text_field :placeholder: "料理名の一部でも" %>
+  <%= f.collection_select :genre_id, Genre.all %>
+  <%= f.submit "検索" %>
+<%= end %>
