@@ -26,4 +26,7 @@
 
   <p>作り方</p>
   <span><%= cook.introduction %></span>
+
+  <%= link_to "編集", edit_public_cook_path(cook.id) %>
+
 <% end %>
