@@ -19,6 +19,9 @@
       <li>
         <%= link_to "トップページ", public_homes_top_path %>
       </li>
+      <li>
+        <%= link_to "マイページ", public_my_page_path(current_customer.id) %>
+      </li>
     <% else %>
       <li>
         <%= link_to "新規登録", new_customer_registration_path %>

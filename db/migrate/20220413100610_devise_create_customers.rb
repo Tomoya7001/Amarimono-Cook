@@ -34,6 +34,8 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
 
     ## 名前を保存するカラム
     t.string :name
+    ##マイページのプロフィール用に追加
+    #t.text :introduction, null: false
 
       t.timestamps null: false
     end

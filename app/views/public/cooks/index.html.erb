@@ -2,7 +2,7 @@
 
 <% @cooks.each do |cook| %>
   <p>料理名</p>
-  <span><%= cook.cook_name %></span>
+  <span><%= link_to cook.cook_name, public_cook_path(cook.id) %></span>
 
   <p>画像</p>
   <% if cook.image.attached? %>

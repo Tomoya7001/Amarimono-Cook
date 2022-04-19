@@ -11,6 +11,7 @@ class Public::CooksController < ApplicationController
 
   def edit
     @cook = Cook.find(params[:id])
+    @genres = Genre.all
   end
 
   def update
@@ -19,9 +20,10 @@ class Public::CooksController < ApplicationController
     redirect_to public_cooks_path(cook.id)
   end
 
+  #投稿
   def new
     @cook = Cook.new
-    @genre = Genre.all
+    @genres = Genre.all
   end
 
   #投稿データを保存する
@@ -31,6 +33,16 @@ class Public::CooksController < ApplicationController
     pp @cook.image
     @cook.save
     redirect_to public_cooks_path
+  end
+
+  #編集
+  def update
+    @cook = Cook.find(params[:id])
+    if @cook.update(cook_params)
+      redirect_to public_cook_path
+    else
+      render :edit
+    end
   end
 
   private

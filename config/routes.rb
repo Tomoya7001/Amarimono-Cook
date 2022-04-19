@@ -38,5 +38,6 @@ Rails.application.routes.draw do
     end
     resources :genres, only: [:index, :show]
     resources :bookmarks, only: [:index]
+    resources :customers, only: [:edit, :index]
   end
 end

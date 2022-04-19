@@ -1,0 +1,15 @@
+<h1>編集画面</h1>
+
+<%= form_with model: @cook, url: public_cooks_path do |f| %>
+  <h4>料理名（レシピ名）</h4>
+    <%= f.text_field :cook_name %>
+  <h4>画像</h4>
+    <%= f.file_field :image, accept: "image/*" %>
+
+  <h4>ジャンル</h4>
+    <%= f.collection_select :genre_id, @genres, :id, :name, include_blank: "--選択してください--"  %>
+
+  <h4>作り方</h4>
+    <%= f.text_area :introduction %>
+  <%= f.submit "変更を保存" %>
+<% end %>

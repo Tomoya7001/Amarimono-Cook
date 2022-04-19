@@ -1,0 +1,19 @@
+<h1>いいね一覧</h1>
+
+<% @customer.favorites.each do |customer| %>
+  <p>料理名</p>
+  <span><%= customer.cook.cook_name %></span>
+
+  <p>画像</p>
+  <% if customer.cook.image.attached? %>
+    <%= image_tag customer.cook.image, size: "100x100" %>
+  <% else %>
+    <%= image_tag "noimageフォト", size: "100x100" %>
+  <% end %>
+
+  <p>ジャンル</p>
+  <span><%= customer.cook.genre.name %></span>
+
+  <p>作り方</p>
+  <span><%= customer.cook.introduction %></span>
+<% end %>

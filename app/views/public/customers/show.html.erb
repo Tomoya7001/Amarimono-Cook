@@ -4,4 +4,26 @@
 
 <%= @customer.name %>
 
-<%= @customer.introduction %>
+<%= link_to "いいね", public_customers_path %>
+
+<%#= @customer.introduction %>
+
+<h2>自分の投稿</h2>
+
+<% @cooks.each do |cook| %>
+  <p>料理名</p>
+  <span><%= cook.cook_name %></span>
+
+  <p>画像</p>
+  <% if cook.image.attached? %>
+    <%= image_tag cook.image, size: "100x100" %>
+  <% else %>
+    <%= image_tag "noimageフォト", size: "100x100" %>
+  <% end %>
+
+  <p>ジャンル</p>
+  <span><%= cook.genre.name %></span>
+
+  <p>作り方</p>
+  <span><%= cook.introduction %></span>
+<% end %>
