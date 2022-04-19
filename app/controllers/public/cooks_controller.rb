@@ -1,6 +1,7 @@
 class Public::CooksController < ApplicationController
 
   def index
+    #@cook = Cook.find(params[:id])
     @cooks = Cook.all
   end
 
@@ -19,7 +20,7 @@ class Public::CooksController < ApplicationController
   end
 
   def new
-    @cooks = Cook.new
+    @cook = Cook.new
     @genre = Genre.all
   end
 
@@ -27,6 +28,7 @@ class Public::CooksController < ApplicationController
   def create
     @cook = Cook.new(cook_params)
     @cook.customer_id = current_customer.id
+    pp @cook.image
     @cook.save
     redirect_to public_cooks_path
   end
@@ -35,7 +37,7 @@ class Public::CooksController < ApplicationController
 
   #投稿データのストロングパラメータ
   def cook_params
-    params.require(:cook).permit(:cook_name, :image_id, :introduction, :customer_id, :genre_id)
+    params.require(:cook).permit(:cook_name, :image, :introduction, :customer_id, :genre_id)
   end
 
 end

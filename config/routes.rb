@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     resources :cooks, only: [:index, :show, :new, :create, :edit, :update] do
       resources :likes, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
     resources :genres, only: [:index, :show]
     resources :bookmarks, only: [:index]

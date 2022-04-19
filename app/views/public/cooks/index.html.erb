@@ -6,14 +6,29 @@
 
   <p>画像</p>
   <% if cook.image.attached? %>
-    <%= image_tag cook.image_id, size: "100x100" %>
+    <%= image_tag cook.image, size: "100x100" %>
   <% else %>
     <%= image_tag "noimageフォト", size: "100x100" %>
   <% end %>
 
   <p>ジャンル</p>
-  <span><%= cook.genre_id %></span>
+  <span><%= cook.genre.name %></span>
 
   <p>作り方</p>
   <span><%= cook.introduction %></span>
+
+  <% if cook.favorited_by?(current_customer) %>
+    <p>
+      <%= link_to public_cook_favorites_path(cook), method: :delete do %>
+        ♥<%= cook.favorites.count %>
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to public_cook_favorites_path(cook), method: :post do %>
+        ♡<%= cook.favorites.count %>
+      <% end %>
+    </p>
+  <% end %>
+
 <% end %>

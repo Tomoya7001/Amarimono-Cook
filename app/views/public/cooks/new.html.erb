@@ -1,5 +1,5 @@
 <h1>料理を投稿</h1>
-  <%= form_with model: @cooks, url: public_cooks_path do |f| %>
+  <%= form_with model: @cook, url: public_cooks_path do |f| %>
     <h4>料理名（レシピ名）</h4>
       <%= f.text_field :cook_name %>
     <h4>画像</h4>
