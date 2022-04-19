@@ -45,6 +45,12 @@ class Public::CooksController < ApplicationController
     end
   end
 
+  def destroy
+    @cook = Cook.find(params[:id])
+    @cook.destroy
+    redirect_to public_my_page_path
+  end
+
   private
 
   #投稿データのストロングパラメータ

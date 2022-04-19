@@ -31,8 +31,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/customers/my_page' => 'customers#show', as: 'my_page'
 
-    resources :cooks, only: [:index, :show, :new, :create, :edit, :update] do
-      resources :likes, only: [:create, :destroy]
+    resources :cooks, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
