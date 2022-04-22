@@ -1,4 +1,3 @@
 class Genre < ApplicationRecord
-
-  has_many :cook
+  has_many :cooks
 end

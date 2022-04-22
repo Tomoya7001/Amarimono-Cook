@@ -64,3 +64,5 @@ end
 
 #binding.pry　これをコントローラーで使う
 gem 'pry-rails'
+# 検索機能
+gem 'ransack'

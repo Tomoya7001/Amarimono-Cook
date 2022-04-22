@@ -1,14 +1,32 @@
-<h1>料理を投稿</h1>
+<div class="container">
   <%= form_with model: @cook, url: public_cooks_path do |f| %>
-    <h4>料理名（レシピ名）</h4>
-      <%= f.text_field :cook_name %>
-    <h4>画像</h4>
-      <%= f.file_field :image, accept: "image/*" %>
-
-    <h4>ジャンル</h4>
-      <%= f.collection_select :genre_id, @genres, :id, :name, include_blank: "--選択してください--"  %>
-
-    <h4>作り方</h4>
-      <%= f.text_area :introduction %>
-    <%= f.submit "投稿" %>
+  <br>
+  <div class="d-flex justify-content-center">
+    <h1><strong>料理を投稿</strong></h1>
+  </div>
+  <br>
+  <table class="table table-bordered">
+    <tr>
+      <td class="bg-light"><%= f.label :料理名（レシピ名） %></td>
+      <td><%= f.text_field :cook_name %></td>
+    </tr>
+    <tr>
+      <td class="bg-light"><%= f.label :画像 %></td>
+      <td><%= f.file_field :image, accept: "image/*" %></td>
+    </tr>
+    <tr>
+      <td class="bg-light"><%= f.label :ジャンル %></td>
+      <td>
+        <%= f.collection_select :genre_id, @genres, :id, :name, include_blank: "--選択してください--"  %>
+      </td>
+    </tr>
+    <tr>
+      <td class="bg-light"><%= f.label :作り方 %></td>
+      <td><%= f.text_area :introduction, :size => "30x10" %></td>
+    </tr>
+  </table>
+  <div class="row justify-content-center">
+    <%= f.submit '投稿', class: "btn btn-primary btn-lg" %>
+  </div>
   <% end %>
+</div>

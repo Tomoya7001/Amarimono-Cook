@@ -1,17 +1,35 @@
-<h1>料理詳細画面</h1>
-
-<h2>料理名</h2>
-<p><%= @cook.cook_name %></p>
-
-<h2>画像</h2>
-<% if @cook.image.attached? %>
-  <%= image_tag @cook.image, size: "100x100" %>
-<% else %>
-  <%= image_tag "noimageフォト", size: "100x100" %>
-<% end %>
-
-<h2>ジャンル</h2>
-<%= @cook.genre.name %>
-
-<h2>作り方</h2>
-<p><%= @cook.introduction %></p>
+<div class="container">
+  <br>
+  <div class="d-flex justify-content-center">
+    <h1><strong>料理詳細画面</strong></h1>
+  </div>
+  <br>
+  <table class="table table-bordered">
+    <tr>
+      <td class="bg-light">投稿者</td>
+      <td><%= @cook.customer.name %></td>
+    </tr>
+    <tr>
+      <td class="bg-light">料理名</td>
+      <td><%= @cook.cook_name %></td>
+    </tr>
+    <tr>
+      <td class="bg-light">画像</td>
+      <td>
+        <% if @cook.image.attached? %>
+          <%= image_tag @cook.image, size: "250x250" %>
+        <% else %>
+          <%= image_tag "noimageフォト", size: "250x250" %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td class="bg-light">ジャンル</td>
+      <td><%= @cook.genre.name %></td>
+    </tr>
+    <tr>
+      <td class="bg-light">作り方</td>
+      <td><%= @cook.introduction %></td>
+    </tr>
+  </table>
+</div>

@@ -2,7 +2,15 @@ class Public::CooksController < ApplicationController
 
   def index
     #@cook = Cook.find(params[:id])
-    @cooks = Cook.all
+    #@cooks = Cook.all
+    @q = Cook.ransack(params[:q])
+    @genres = Genre.all
+    @cooks = @q.result(distinct: true)
+  end
+
+  def search
+    @q = Cook.search(search_params)
+    @cooks = @q.result(distinct: true)
   end
 
   def show
@@ -12,12 +20,6 @@ class Public::CooksController < ApplicationController
   def edit
     @cook = Cook.find(params[:id])
     @genres = Genre.all
-  end
-
-  def update
-    @cook = Cook.find(params[:id])
-    @cook.update(cook_params)
-    redirect_to public_cooks_path(cook.id)
   end
 
   #投稿
@@ -39,7 +41,7 @@ class Public::CooksController < ApplicationController
   def update
     @cook = Cook.find(params[:id])
     if @cook.update(cook_params)
-      redirect_to public_cook_path
+      redirect_to public_my_page_path
     else
       render :edit
     end
@@ -56,6 +58,10 @@ class Public::CooksController < ApplicationController
   #投稿データのストロングパラメータ
   def cook_params
     params.require(:cook).permit(:cook_name, :image, :introduction, :customer_id, :genre_id)
+  end
+
+  def search_params
+    params.require(:q).permit(:genre_id_eq)
   end
 
 end

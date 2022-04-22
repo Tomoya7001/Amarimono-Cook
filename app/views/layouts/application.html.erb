@@ -5,32 +5,64 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-    <% if customer_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-      </li>
-      <li>
-        <%= link_to "トップページ", public_homes_top_path %>
-      </li>
-      <li>
-        <%= link_to "マイページ", public_my_page_path(current_customer.id) %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_customer_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_customer_session_path %>
-      </li>
-    <% end %>
-  </header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container">
+              <a class="navbar-brand" href="https://f450dbbc096c4b3aa713550b87e45c66.vfs.cloud9.ap-northeast-1.amazonaws.com/">
+                <span>余り物Cook</span>
+              </a>
+              <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="navbar-collapse collapse" id="navbarNavDropdown" style="">
+                <% if admin_signed_in? %>
+                <ul class="navbar-nav ml-auto">
+                  <%= link_to destroy_admin_session_path, {class: "nav-link text-light", method: :delete} do %>
+                    <li class="fas fa-sign-out-alt"></li> ログアウト
+                  <% end %>
+                  <%= link_to admin_customers_path, class: "nav-link text-light" do %>
+                    <li class="fas fa-users"></li> ユーザー一覧
+                  <% end %>
+                  <%= link_to admin_genres_path, class: "nav-link text-light" do %>
+                    <li class="fas fa-link"></li> ジャンル一覧
+                  <% end %>
+                </ul>
+                <% elsif customer_signed_in? %>
+                  <%= link_to destroy_customer_session_path, {class: "nav-link text-light", method: :delete} do %>
+                    <i class="fas fa-sign-out-alt" ></i> ログアウト
+                  <% end %>
+                  <%= link_to root_path, class: "nav-link text-light" do %>
+                    <i class="fas fa-home" ></i> トップページ
+                  <% end %>
+                  <%= link_to public_my_page_path(current_customer.id), class: "nav-link text-light" do %>
+                    <i class="fas fa-user" ></i> マイページ
+                  <% end %>
+                <% else %>
+                  <%= link_to root_path, class: "nav-link text-light" do %>
+                    <i class="fas fa-home" ></i> Home
+                  <% end %>
+                  <%= link_to public_about_path, class: "nav-link text-light" do %>
+                    <i class="fas fa-link" ></i> About
+                  <% end %>
+                  <%= link_to new_customer_registration_path, class: "nav-link text-light" do %>
+                    <i class="fas fa-user-plus"></i> 新規登録
+                  <% end %>
+                  <%= link_to new_customer_session_path, class: "nav-link text-light" do %>
+                    <i class="fas fa-sign-in-alt"></i> ログイン
+                  <% end %>
+                </ul>
+                <% end %>
+              </div>
+          </div>
+      </nav>
+    </header>
 
     <%#= render 'searches/form' %>
 

@@ -1,15 +1,28 @@
-<h1>編集画面</h1>
-
-<%= form_with model: @customer, url: public_my_page_path, local:true do |f| %>
-
-  <%= f.label :ユーザーネーム %>
-  <%= f.text_field :name, autofocus: true %>
-
-  <%= f.label :メールアドレス %>
-  <%= f.text_field :email, autofocus: true %>
-
-  <%= f.submit "編集を保存" %>
-
-<% end %>
-
-<%= link_to "退会する", public_unsubscribe_path %>
+<div class="container">
+  <%= form_with model: @customer, url: public_my_page_path, local:true do |f| %>
+  <br>
+  <div class="d-flex justify-content-center">
+    <h1><strong>編集画面</strong></h1>
+  </div>
+  <br>
+  <table class="table table-bordered">
+    <tr>
+      <td class="bg-light"><%= f.label :ユーザーネーム %></td>
+      <td><%= f.text_field :name, autofocus: true, :size => "35x35" %></td>
+    </tr>
+    <tr>
+      <td class="bg-light"><%= f.label :画像 %></td>
+      <td><%= f.file_field :image, accept: "image/*" %></td>
+    </tr>
+    <tr>
+      <td class="bg-light"><%= f.label :メールアドレス %></td>
+      <td><%= f.text_field :email, autofocus: true, :size => "35x35" %></td>
+    </tr>
+  </table>
+  <div class="row justify-content-center">
+    <%= f.submit '変更を保存', class: "btn btn-success btn-lg" %>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= link_to '退会する', public_unsubscribe_path, class: "btn btn-danger btn-lg" %>
+  </div>
+  <% end %>
+</div>

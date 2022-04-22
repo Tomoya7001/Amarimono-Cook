@@ -1,34 +1,42 @@
-<h1>レシピ一覧</h1>
-
-<% @cooks.each do |cook| %>
-  <p>料理名</p>
-  <span><%= link_to cook.cook_name, public_cook_path(cook.id) %></span>
-
-  <p>画像</p>
-  <% if cook.image.attached? %>
-    <%= image_tag cook.image, size: "100x100" %>
-  <% else %>
-    <%= image_tag "noimageフォト", size: "100x100" %>
-  <% end %>
-
-  <p>ジャンル</p>
-  <span><%= cook.genre.name %></span>
-
-  <p>作り方</p>
-  <span><%= cook.introduction %></span>
-
-  <% if cook.favorited_by?(current_customer) %>
-    <p>
-      <%= link_to public_cook_favorites_path(cook), method: :delete do %>
-        ♥<%= cook.favorites.count %>
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to public_cook_favorites_path(cook), method: :post do %>
-        ♡<%= cook.favorites.count %>
-      <% end %>
-    </p>
-  <% end %>
-
-<% end %>
+<%= render 'search_form', q: @q, genres: @genres %>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="d-flex justify-content-center">
+        <h1><strong>レシピ一覧</strong></h1>
+      </div>
+    <br>
+      <div class="row">
+        <% @cooks.each do |cook| %>
+          <div class="col-4">
+            <p>
+              [<%= cook.cook_name %>]
+            </p>
+            <%= link_to public_cook_path(cook) do %>
+              <% if cook.image.attached? %>
+                <%= image_tag cook.image, size: "200x200" %>
+              <% else %>
+                <%= image_tag "noimageフォト", size: "200x200" %>
+              <% end %>
+            <% end %>
+　　　　　　<div class="list-comment">
+              <% if cook.favorited_by?(current_customer) %>
+                <p>
+                  <%= link_to public_cook_favorites_path(cook), method: :delete do %>
+                    ♥<%= cook.favorites.count %>
+                  <% end %>
+                </p>
+              <% else %>
+                <p>
+                  <%= link_to public_cook_favorites_path(cook), method: :post do %>
+                    ♡<%= cook.favorites.count %>
+                  <% end %>
+                </p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

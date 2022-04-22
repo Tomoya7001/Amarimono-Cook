@@ -14,13 +14,10 @@ Rails.application.routes.draw do
   }
 
   root to: 'public/homes#top'
-  get '/search', to: 'searches#search'
-
-  namespace :public do
-    get 'homes/top'
-    get '/public/home/about' => 'homes#about', as: 'about'
-    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-    patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
+  get '/search', to: 'public/cooks#search'
+  # ゲストログイン用
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'customers/sessions#new_guest'
   end
 
   namespace :admin do
@@ -33,6 +30,9 @@ Rails.application.routes.draw do
   namespace :public do
     root to: 'homes#top'
     get '/customers/my_page' => 'customers#show', as: 'my_page'
+    get '/public/home/about' => 'homes#about', as: 'about'
+    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
 
     resources :cooks, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
       resources :comments, only: [:create, :destroy]
@@ -40,6 +40,19 @@ Rails.application.routes.draw do
     end
     resources :genres, only: [:index, :show]
     resources :bookmarks, only: [:index]
-    resources :customers, only: [:edit, :index, :update]
+    resources :customers, only: [:edit, :index, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
   end
+
+  devise_scope :customer do
+    get '/customers/sign_out' => 'devise/sessions#destroy'
+  end
+
+  devise_scope :admin do
+    get '/admin/sign_out' => 'devise/sessions#destroy'
+  end
+
 end

@@ -1,7 +1,8 @@
 class Public::SearchesController < ApplicationController
 
   def search
-    @genres = Genre.all
+    @genre = params[:genre]
+    @records = Cook.search_fo(@genre)
   end
 
 end

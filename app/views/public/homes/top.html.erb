@@ -1,11 +1,53 @@
-<h1>余り物Cook</h1>
+<%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post, class: "login" %>
 
-<p>このサイトは、余り物の食材で料理ができるレシピをお探しできます。</p>
-<br>
-<p>会員でない方も料理を調べることができますが、</p>
-<br>
-<p>ブックマークや、メモ機能を使うには登録をする必要があります。</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10">
+      <div class="text-center m-5">
+        <div class="mv-text">
+          <span><br>
+            <h1>余り物Cook</h1>
+            <br>
+            このサイトは、余り物の食材で簡単な料理ができるレシピをお探しできます。<br>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<%= link_to "料理投稿", new_public_cook_path %>
-<br>
-<%= link_to "一覧ページ", public_cooks_path %>
+  <!--新着料理-->
+  <div class="row mt-4">
+    <section class="new-items col-md-12">
+      <h3><strong>新着料理</strong></h3>
+      <div class="row">
+        <% @cooks.each do |cook| %>
+          <div class="col-3">
+            <div class="card border border-0">
+              <div class="card-body">
+                <h6 class="card-title"><strong><%= cook.cook_name %></strong></h6>
+              </div>
+              <%= link_to public_cook_path(cook) do %>
+                <p>
+                  <% if cook.image.attached? %>
+                    <%= image_tag cook.image, size: "150x150" %>
+                  <% else %>
+                    <%= image_tag "noimageフォト", size: "150x150" %>
+                  <% end %>
+                </p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  </div>
+  <div class="row">
+    <table class="table table-borderless">
+      <tr>
+        <td class="text-right">
+          <%= link_to "一覧ページを見る>", public_cooks_path %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

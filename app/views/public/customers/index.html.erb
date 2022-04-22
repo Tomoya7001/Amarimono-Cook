@@ -1,19 +1,26 @@
-<h1>いいね一覧</h1>
-
-<% @customer.favorites.each do |customer| %>
-  <p>料理名</p>
-  <span><%= customer.cook.cook_name %></span>
-
-  <p>画像</p>
-  <% if customer.cook.image.attached? %>
-    <%= image_tag customer.cook.image, size: "100x100" %>
-  <% else %>
-    <%= image_tag "noimageフォト", size: "100x100" %>
-  <% end %>
-
-  <p>ジャンル</p>
-  <span><%= customer.cook.genre.name %></span>
-
-  <p>作り方</p>
-  <span><%= customer.cook.introduction %></span>
-<% end %>
+<div class="container">
+  <div class="row mt-4">
+    <section class="new-items col-md-12">
+      <div class="d-flex justify-content-center">
+        <h1><strong>いいね一覧</strong></h1>
+      </div>
+      <div class="row">
+        <% @customer.favorites.each do |customer| %>
+          <div class="col-6">
+            <br>
+            <div class="row">
+              <strong>[<%= customer.cook.cook_name %>]</strong>
+              <%= link_to public_cook_path(customer) do %>
+                <% if customer.cook.image.attached? %>
+                  <%= image_tag customer.cook.image, size: "300x300" %>
+                <% else %>
+                  <%= image_tag "noimageフォト", size: "300x300" %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  </div>
+</div>

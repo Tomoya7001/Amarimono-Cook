@@ -1,15 +1,32 @@
-<h1>ユーザー一覧</h1>
-
-<% @customers.each do |customer| %>
-
-  <%= customer.name %>
-
-  <%= customer.email %>
-
-  <% if customer.is_deleted? %>
-    <th>退会</th>
-  <% else %>
-    <th>有効</th>
-  <% end %>
-
-<% end %>
+<div class="container">
+  <br>
+  <div class="d-flex justify-content-center">
+    <h1><strong>ユーザー一覧</strong></h1>
+  </div>
+  <br>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>ユーザー名</th>
+        <th>メールアドレス</th>
+        <th></th>
+        <th>会員ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.name %></td>
+        <td><%= customer.email %></td>
+        <td>
+          <% if customer.is_deleted? %>
+            <th>退会</th>
+          <% else %>
+            <th>有効</th>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
