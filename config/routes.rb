@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   }
 
   root to: 'public/homes#top'
-  get '/search', to: 'public/cooks#search'
+  #get '/search', to: 'public/cooks#search'
   # ゲストログイン用
   devise_scope :customer do
     post 'customers/guest_sign_in', to: 'customers/sessions#new_guest'
@@ -35,12 +36,25 @@ Rails.application.routes.draw do
     patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
 
     resources :cooks, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+      #検索機能
+      collection do
+        get 'search'
+      end
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
+      resources :reviews, only: [:index, :create, :show]
     end
     resources :genres, only: [:index, :show]
     resources :bookmarks, only: [:index]
+    # メモ用
+
+
     resources :customers, only: [:edit, :index, :update] do
+      resources :memos, only: [:index, :create, :update, :destroy] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'

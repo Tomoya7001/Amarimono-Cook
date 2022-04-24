@@ -1,5 +1,11 @@
-<%= search_form_for(q, url: search_path) do |f| %>
-  <%= f.label :genre_id_eq, "ジャンル名" %>
-  <%= f.collection_select :genre_id_eq, genres, :id, :name, :include_blank => '指定なし' %>
-  <%= f.submit "検索" %>
-<% end %>
+<div class="container">
+<br>
+<%= search_form_for(q, url: search_public_cooks_path) do |f| %>
+  <div class="d-flex justify-content-center">
+    <br>
+    <td><strong><%= f.label :genre_id_eq, "ジャンル名" %>&nbsp;&nbsp;&nbsp;</strong></td>
+    <td><%= f.collection_select :genre_id_eq, genres, :id, :name, :include_blank => '指定なし' %>&nbsp;&nbsp;&nbsp;</td>
+    <td><%= f.submit '検索', class: "btn btn-success btn-sm" %></td>
+  </div>
+  <% end %>
+</div>

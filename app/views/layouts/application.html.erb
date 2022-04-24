@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -44,6 +45,9 @@
                   <%= link_to public_my_page_path(current_customer.id), class: "nav-link text-light" do %>
                     <i class="fas fa-user" ></i> マイページ
                   <% end %>
+                  <%= link_to public_customer_memos_path(current_customer.id), class: "nav-link text-light" do %>
+                    <i class="fas fa-pencil-alt"></i> メモ
+                  <% end %>
                 <% else %>
                   <%= link_to root_path, class: "nav-link text-light" do %>
                     <i class="fas fa-home" ></i> Home
@@ -55,7 +59,7 @@
                     <i class="fas fa-user-plus"></i> 新規登録
                   <% end %>
                   <%= link_to new_customer_session_path, class: "nav-link text-light" do %>
-                    <i class="fas fa-sign-in-alt"></i> ログイン
+                    <i class="fas  fa-sign-in-alt"></i> ログイン
                   <% end %>
                 </ul>
                 <% end %>

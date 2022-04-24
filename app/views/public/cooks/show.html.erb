@@ -32,4 +32,16 @@
       <td><%= @cook.introduction %></td>
     </tr>
   </table>
+  <div class="card-content">
+    <div class="content average-score">
+      <div class="star-rating mb-2">
+        <div class="star-rating-front" style="width: %">★★★</div>
+        <div class="star-rating-back">★★★</div>
+        <div class="average-score-display ml-3 pt-2">
+          点(<%= @cook.reviews.count %>件のレビュー)
+        </div>
+      </div>
+    </div>
+    <%= render 'public/reviews/form', review: @review, cook: @cook %>
+  </div>
 </div>

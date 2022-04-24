@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_20_091659) do
+ActiveRecord::Schema.define(version: 2022_04_23_233133) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -68,6 +68,16 @@ ActiveRecord::Schema.define(version: 2022_04_20_091659) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "customer_roles", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "role_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id", "role_id"], name: "index_customer_roles_on_customer_id_and_role_id", unique: true
+    t.index ["customer_id"], name: "index_customer_roles_on_customer_id"
+    t.index ["role_id"], name: "index_customer_roles_on_role_id"
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -75,6 +85,7 @@ ActiveRecord::Schema.define(version: 2022_04_20_091659) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
+    t.string "image"
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -102,9 +113,33 @@ ActiveRecord::Schema.define(version: 2022_04_20_091659) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "memos", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "customer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "relationsihps", force: :cascade do |t|
     t.integer "follower_id", null: false
     t.integer "followed_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "cook_id", null: false
+    t.string "content"
+    t.integer "score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cook_id"], name: "index_reviews_on_cook_id"
+    t.index ["customer_id"], name: "index_reviews_on_customer_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -119,4 +154,8 @@ ActiveRecord::Schema.define(version: 2022_04_20_091659) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "customer_roles", "customers"
+  add_foreign_key "customer_roles", "roles"
+  add_foreign_key "reviews", "cooks"
+  add_foreign_key "reviews", "customers"
 end

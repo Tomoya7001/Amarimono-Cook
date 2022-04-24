@@ -34,7 +34,8 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
 
     ## 名前を保存するカラム
     t.string :name
-    ##マイページのプロフィール用に追加
+    ##マイページのプロフィール画像用に追加
+    t.string :image
     #t.text :introduction
     ##退会機能
     t.boolean :is_deleted, null: false, default: false

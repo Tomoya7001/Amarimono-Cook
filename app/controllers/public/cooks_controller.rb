@@ -1,4 +1,5 @@
 class Public::CooksController < ApplicationController
+  before_action :set_q, only: [:index, :search]
 
   def index
     #@cook = Cook.find(params[:id])
@@ -9,12 +10,13 @@ class Public::CooksController < ApplicationController
   end
 
   def search
-    @q = Cook.search(search_params)
     @cooks = @q.result(distinct: true)
+    @results = @q.result
   end
 
   def show
     @cook = Cook.find(params[:id])
+    @review = Review.new
   end
 
   def edit
@@ -54,6 +56,10 @@ class Public::CooksController < ApplicationController
   end
 
   private
+
+  def set_q
+    @q = Cook.ransack(params[:q])
+  end
 
   #投稿データのストロングパラメータ
   def cook_params
