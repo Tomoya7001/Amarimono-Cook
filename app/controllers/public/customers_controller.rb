@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!, except: [:top, :about]
+  #before_action :current_customer.email == "guest@guest.com", only: [:show, :index]
 
   def show
     @customers = Customer.all
@@ -26,6 +27,10 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
+    if guest?
+      redirect_to
+    end
+
     @customer = Customer.find(current_customer.id)
     @customer.update(customer_params)
     redirect_to public_my_page_path

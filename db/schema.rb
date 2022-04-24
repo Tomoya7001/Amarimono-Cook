@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 2022_04_23_233133) do
     t.integer "customer_id", null: false
     t.integer "cook_id", null: false
     t.string "content"
-    t.integer "score"
+    t.string "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["cook_id"], name: "index_reviews_on_cook_id"

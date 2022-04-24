@@ -10,7 +10,7 @@ before_action :authenticate_customer!, only: [:create]
     @review = Review.new(review_params)
     @review.customer_id = current_customer.id
     if @review.save
-      redirect_to public_cooks_path(@review.cook)
+      redirect_to public_cook_reviews_path(@review.cook)
     else
       @cook = Cook.find(params[:cook_id])
       render "public/cooks/show"

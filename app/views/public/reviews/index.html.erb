@@ -18,18 +18,27 @@
             <th>コメント</th>
           </tr>
         </thead>
+    </div>
+    <div class="row">
         <tbody>
           <tr>
-            <td><%= current_customer.name %></td>
-            <td></td>
+            <% @reviews.each do |r| %>
             <td>
-              <% @reviews.each do |r| %>
-                <%= r.content %>
-              <% end %>
+              <%= r.customer.name %>
             </td>
+            <td>
+              <%= r.score %>
+            </td>
+            <td>
+              <%= r.content %>
+            </td>
+            <% end %>
           </tr>
         </tbody>
       </table>
     </div>
   <% end %>
+  <div class="d-flex justify-content-end">
+    <%= link_to "詳細へ戻る", public_cook_path(@cook), class: "button light ml-3 mt-3" %>
+  </div>
 </div>

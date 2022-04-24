@@ -23,13 +23,8 @@
     </div>
   </div>
   <div class="row">
-    <br>
-    フォロー数: <%#= @customer.followings.count %>
-    <br>
-    フォロワー数: <%#= @customer.followers.count %>
-  </div>
-  <div class="row">
-    <%= link_to "プロフィール編集", edit_public_customer_path(current_customer) %>
+  <div class="d-flex justify-content-end">
+    <%= link_to "プロフィール編集", edit_public_customer_path(current_customer), class: "button light ml-3 mt-3" %>
   </div>
 </div>
 <div class="container">
