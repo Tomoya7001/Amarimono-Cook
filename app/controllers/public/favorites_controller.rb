@@ -1,10 +1,14 @@
 class Public::FavoritesController < ApplicationController
 
   def create
-    cook = Cook.find(params[:cook_id])
-    favorite = current_customer.favorites.new(cook_id: cook.id)
-    favorite.save
-    redirect_to public_cooks_path(cook)
+    if current_customer.email == "guest@guest.com"
+      redirect_to root_path, notice: 'ゲストログインではこちらの機能は使えません。'
+    else
+      cook = Cook.find(params[:cook_id])
+      favorite = current_customer.favorites.new(cook_id: cook.id)
+      favorite.save
+      redirect_to public_cooks_path(cook)
+    end
   end
 
   def destroy

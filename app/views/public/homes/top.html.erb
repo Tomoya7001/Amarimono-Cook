@@ -1,4 +1,6 @@
-<%= flash[:notice] %>
+<div class="d-flex justify-content-center">
+  <%= flash[:notice] %>
+</div>
 <div class="container">
 <div class="d-flex justify-content-start">
   <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post, class: "login, button light ml-3 mt-3" %>

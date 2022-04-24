@@ -1,16 +1,16 @@
 class Admin::ReviewsController < ApplicationController
 
   def index
-    @reviews = Review.find(params[:id])
+    @reviews = Review.all
   end
 
   def show
   end
 
   def destroy
-    @revirew = Review.find(params[:id])
+    @review = Review.find(params[:id])
     @review.destroy
-    redirect_to public_cook_reviews, notice: 'レビューを削除しました'
+    redirect_to admin_reviews_path, notice: 'レビューを削除しました'
   end
 
 end

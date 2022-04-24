@@ -14,17 +14,17 @@
           </tr>
         </thead>
         <tbody>
+          <% @reviews.each do |r| %>
           <tr>
-            <td><%= current_customer.name %></td>
+            <td><%= r.customer.name %></td>
             <td>
-              <% @reviews.each do |r| %>
                 <%= r.content %>
-              <% end %>
             </td>
             <td>
-              <%= button_to '削除', admin_review_path(review.id), method: :delete, class: "btn btn-danger btn-sm" %>
+              <%= button_to '削除', admin_review_path(r.id), method: :delete, class: "btn btn-danger btn-sm" %>
             </td>
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

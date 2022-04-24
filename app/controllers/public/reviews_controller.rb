@@ -1,5 +1,6 @@
 class Public::ReviewsController < ApplicationController
 before_action :authenticate_customer!, only: [:create]
+before_action :guest_customer, only: [:create, :index]
 
   def index
     @cook = Cook.find(params[:cook_id])

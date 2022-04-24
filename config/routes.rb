@@ -31,7 +31,8 @@ Rails.application.routes.draw do
 
   namespace :public do
     root to: 'homes#top'
-    get '/customers/my_page' => 'customers#show', as: 'my_page'
+    get '/customers/my_page' => 'customers#mypage', as: 'my_page'
+    get '/customers/:id' => 'customers#show'
     get '/public/home/about' => 'homes#about', as: 'about'
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
@@ -57,8 +58,8 @@ Rails.application.routes.draw do
       end
     end
       resource :relationships, only: [:create, :destroy]
-      get 'followings' => 'public/relationships#followings', as: 'followings'
-      get 'followers' => 'public/relationships#followers', as: 'followers'
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
     end
   end
 

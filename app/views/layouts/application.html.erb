@@ -45,7 +45,7 @@
                   <%= link_to root_path, class: "nav-link text-light" do %>
                     <i class="fas fa-home" ></i> トップページ
                   <% end %>
-                  <%= link_to public_my_page_path(current_customer.id), class: "nav-link text-light" do %>
+                  <%= link_to public_my_page_path(), class: "nav-link text-light" do %>
                     <i class="fas fa-user" ></i> マイページ
                   <% end %>
                   <%= link_to public_customer_memos_path(current_customer.id), class: "nav-link text-light" do %>

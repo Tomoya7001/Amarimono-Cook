@@ -1,0 +1,68 @@
+
+  <div class="container">
+    <br>
+    <div class="d-flex justify-content-center">
+      <h1><strong>マイページ</strong></h1>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= image_tag @customer.get_image(150,150) %>
+      </div>
+      <div class="col">
+        <br>
+        <h4><strong><%= @customer.name %></strong></h4>
+      </div>
+      <div class="col">
+        <%= link_to public_customers_path, class: "nav-link text-dark" do %>
+          <code style="font-size:2em"><i class="far fa-heart"></i></code>
+        <% end %>
+      </div>
+      <div class="col">
+        <%= link_to new_public_cook_path, class: "nav-link text-dark" do %>
+          <code style="font-size:2em"><i class="fas fa-plus-square"></i></code>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <br>
+      <th><p class ="text-small">フォロー数: <%= link_to @customer.followings.count, public_customer_followings_path(@customer) %></p></th>
+    </div>
+    <div class="row">
+      <br>
+      <th><p class ="text-small">フォロワー数: <%= link_to @customer.followers.count, public_customer_followers_path(@customer) %></p></th>
+    </div>
+    <div class="row">
+      <div class="d-flex justify-content-end">
+        <%= link_to "プロフィール編集", edit_public_customer_path(current_customer), class: "button light ml-1 mt-1" %>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row mt-4">
+      <section class="new-items col-md-12">
+        <div class="d-flex justify-content-center">
+          <h2><strong>自分の投稿</strong></h2>
+        </div>
+        <div class="row">
+          <% @cooks.each do |cook| %>
+            <div class="col-6">
+              <br>
+              <div class="row">
+                <strong>[<%= cook.cook_name %>]</strong>
+                <%= link_to public_cook_path(cook) do %>
+                  <% if cook.image.attached? %>
+                    <%= image_tag cook.image, size: "300x300" %>
+                  <% else %>
+                    <%= image_tag "noimageフォト", size: "300x300" %>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="row justify-content-center">
+                <%= link_to "編集", edit_public_cook_path(cook.id), class: "btn btn-md btn-success" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </section>
+    </div>
+  </div>

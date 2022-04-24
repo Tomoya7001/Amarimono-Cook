@@ -1,6 +1,6 @@
-class CreateRelationsihps < ActiveRecord::Migration[6.1]
+class CreateRelationships < ActiveRecord::Migration[6.1]
   def change
-    create_table :relationsihps do |t|
+    create_table :relationships do |t|
 
     t.integer :follower_id, null: false
     t.integer :followed_id, null: false

@@ -5,9 +5,13 @@ class Public::MemosController < ApplicationController
   end
 
   def create
-    memo = current_customer.memos.build(memo_params)
-    memo.save!
-    redirect_to public_customer_memos_path(current_customer.id)
+    if current_customer.email == "guest@guest.com"
+      redirect_to root_path, notice: 'ゲストログインではこちらの機能は使えません。'
+    else
+      memo = current_customer.memos.build(memo_params)
+      memo.save!
+      redirect_to public_customer_memos_path(current_customer.id)
+    end
   end
 
   def destroy
