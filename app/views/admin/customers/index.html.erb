@@ -11,6 +11,7 @@
         <th>メールアドレス</th>
         <th></th>
         <th>会員ステータス</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -24,6 +25,9 @@
           <% else %>
             <th>有効</th>
           <% end %>
+        </td>
+        <td>
+          <%= link_to '詳細', admin_customer_path(customer.id) %>
         </td>
       </tr>
       <% end %>

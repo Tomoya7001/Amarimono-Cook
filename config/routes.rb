@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :cooks, only: [:create, :new, :index, :show, :edit, :update, :destroy]
+    resources :reviews, only: [:index, :create, :show, :destroy]
     resources :genres, only: [:create, :index, :edit, :update]
   end
 
@@ -56,8 +57,8 @@ Rails.application.routes.draw do
       end
     end
       resource :relationships, only: [:create, :destroy]
-      get 'followings' => 'relationships#followings', as: 'followings'
-      get 'followers' => 'relationships#followers', as: 'followers'
+      get 'followings' => 'public/relationships#followings', as: 'followings'
+      get 'followers' => 'public/relationships#followers', as: 'followers'
     end
   end
 

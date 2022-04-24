@@ -1,12 +1,13 @@
 class Public::RelationshipsController < ApplicationController
+  before_action :authenticate_user!
   #フォローするとき
   def create
-    current_user.follow(params[:customer_id])
+    current_customer.follow(params[:customer_id])
     redirect_to request.referer
   end
   #フォロー外すとき
   def destory
-    current_user.unfollow(params[:customer_id])
+    current_customer.unfollow(params[:customer_id])
     redirect_to request.referer
   end
 

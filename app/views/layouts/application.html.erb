@@ -34,6 +34,9 @@
                   <%= link_to admin_genres_path, class: "nav-link text-light" do %>
                     <li class="fas fa-link"></li> ジャンル一覧
                   <% end %>
+                  <%= link_to admin_reviews_path, class: "nav-link text-light" do %>
+                    <i class="far fa-comment-dots" ></i> レビュー一覧
+                  <% end %>
                 </ul>
                 <% elsif customer_signed_in? %>
                   <%= link_to destroy_customer_session_path, {class: "nav-link text-light", method: :delete} do %>
@@ -50,10 +53,10 @@
                   <% end %>
                 <% else %>
                   <%= link_to root_path, class: "nav-link text-light" do %>
-                    <i class="fas fa-home" ></i> Home
+                    <i class="fas fa-home" ></i> ホーム
                   <% end %>
                   <%= link_to public_about_path, class: "nav-link text-light" do %>
-                    <i class="fas fa-link" ></i> About
+                    <i class="fas fa-link" ></i> アバウト
                   <% end %>
                   <%= link_to new_customer_registration_path, class: "nav-link text-light" do %>
                     <i class="fas fa-user-plus"></i> 新規登録

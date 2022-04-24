@@ -15,14 +15,14 @@ class Customer < ApplicationRecord
   has_many :reviews, dependent: :destroy
   #cancancan利用　ゲストユーザー制限の為
   has_many :roles, through: :user_roles
-
   # relationshipsモデルと1:n フォローをした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-
   # 一覧画面で利用
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
+
+  validates :name, uniqueness: true, length: { minimum:2,maximum:20 }
 
   # フォローしたときの処理
   def follow(customer_id)

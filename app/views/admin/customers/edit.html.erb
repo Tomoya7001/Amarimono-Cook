@@ -1,0 +1,40 @@
+
+<div class="container">
+  <%= form_with model: @customers, url: admin_customer_path do |f| %>
+  <br>
+  <div class="d-flex justify-content-center">
+    <h1><strong><%= @customers.name %>様の編集</strong></h1>
+  </div>
+  <br>
+  <table class="table table-bordered">
+    <tr>
+      <td class="bg-light"><%= f.label :会員ID %></td>
+      <td><%= f.text_field :id, autofocus: true, autocomplete: "id", :size => "35x35" %></td>
+    </tr>
+    <tr>
+      <td class="bg-light"><%= f.label :ユーザーネーム %></td>
+      <td><%= f.text_field :name, autofocus: true, autocomplete: "name", :size => "35x35" %></td>
+    </tr>
+    <tr>
+      <td class="bg-light"><%= f.label :メールアドレス %></td>
+      <td>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", :size => "35x35" %>
+      </td>
+    </tr>
+    <tr>
+      <td class="bg-light"><%= f.label :会員ステータス %></td>
+      <td>
+        <%= f.radio_button :is_deleted, false %>
+        <%= f.label :有効 %>
+        <%= f.radio_button :is_deleted, true %>
+        <%= f.label :退会 %>
+      </td>
+    </tr>
+  </table>
+  <div class="row justify-content-center">
+    <%= link_to '詳細へ戻る', admin_customer_path(@customers.id), class: "btn btn-primary btn-lg" %>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= f.submit "変更を保存",class:"btn btn-success btn-lg" %>
+  </div>
+  <% end %>
+</div>

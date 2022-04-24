@@ -1,0 +1,36 @@
+<div class="container">
+  <br>
+  <div class="d-flex justify-content-center">
+    <h1><strong><%= @customers.name %>様の会員情報</strong></h1>
+  </div>
+  <br>
+    <table class="table">
+      <tr>
+        <th>会員ID</th>
+        <td><%= @customers.id %>
+        </td>
+      </tr>
+      <tr>
+        <th>ユーザーネーム</th>
+        <td><%= @customers.name %>
+        </td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @customers.email %></td>
+      </tr>
+      <tr>
+        <th>会員ステータス </th>
+        <% if @customers.is_deleted? %>
+          <th>退会</th>
+        <% else %>
+          <th>有効</th>
+        <% end %>
+      </tr>
+    </table>
+    <div class="d-flex justify-content-center">
+      <span><%= link_to "一覧へ戻る", admin_customers_path, class: "btn btn-primary btn-lg" %></span>
+      &nbsp;&nbsp;&nbsp;
+      <span><%= link_to "編集する", edit_admin_customer_path(@customers), class:"btn btn-success btn-lg" %></span>
+    </div>
+</main>

@@ -12,10 +12,14 @@
       <h4><strong><%= @customer.name %></strong></h4>
     </div>
     <div class="col">
-      <%= link_to "いいね",public_customers_path %>
+      <%= link_to public_customers_path, class: "nav-link text-dark" do %>
+        <code style="font-size:2em"><i class="far fa-heart"></i></code>
+      <% end %>
     </div>
     <div class="col">
-      <%= link_to "料理投稿", new_public_cook_path %>
+      <%= link_to new_public_cook_path, class: "nav-link text-dark" do %>
+        <code style="font-size:2em"><i class="fas fa-plus-square"></i></code>
+      <% end %>
     </div>
   </div>
   <div class="row">

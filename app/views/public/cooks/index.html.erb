@@ -21,13 +21,13 @@
             <% end %>
 　　　　　　<div class="list-comment">
               <% if cook.favorited_by?(current_customer) %>
-                <p>
+                <p class="h4">
                   <%= link_to public_cook_favorites_path(cook), method: :delete do %>
                     ♥<%= cook.favorites.count %>
                   <% end %>
                 </p>
               <% else %>
-                <p>
+                <p class="h4">
                   <%= link_to public_cook_favorites_path(cook), method: :post do %>
                     ♡<%= cook.favorites.count %>
                   <% end %>

@@ -1,0 +1,31 @@
+<div class="container">
+  <br>
+  <div class="d-flex justify-content-center">
+    <h1><strong>レビュー一覧</strong></h1>
+  </div>
+  <br>
+    <div class="row">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>記入者</th>
+            <th>コメント</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= current_customer.name %></td>
+            <td>
+              <% @reviews.each do |r| %>
+                <%= r.content %>
+              <% end %>
+            </td>
+            <td>
+              <%= button_to '削除', admin_review_path(review.id), method: :delete, class: "btn btn-danger btn-sm" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

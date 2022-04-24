@@ -15,6 +15,16 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
   end
 
+  def followers
+    customer = Customer.find(params[:id])
+    @customers = customer.followers
+  end
+
+  def followeds
+    customer = Customer.find(params[:id])
+    @customers = customer.followeds
+  end
+
   def update
     @customer = Customer.find(current_customer.id)
     @customer.update(customer_params)
