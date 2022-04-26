@@ -14,7 +14,7 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
           <div class="container">
               <a class="navbar-brand" href="https://f450dbbc096c4b3aa713550b87e45c66.vfs.cloud9.ap-northeast-1.amazonaws.com/">
                 <span>余り物Cook</span>
@@ -25,43 +25,43 @@
               <div class="navbar-collapse collapse" id="navbarNavDropdown" style="">
                 <% if admin_signed_in? %>
                 <ul class="navbar-nav ml-auto">
-                  <%= link_to destroy_admin_session_path, {class: "nav-link text-light", method: :delete} do %>
+                  <%= link_to destroy_admin_session_path, {class: "nav-link text-dark", method: :delete} do %>
                     <li class="fas fa-sign-out-alt"></li> ログアウト
                   <% end %>
-                  <%= link_to admin_customers_path, class: "nav-link text-light" do %>
+                  <%= link_to admin_customers_path, class: "nav-link text-secondary" do %>
                     <li class="fas fa-users"></li> ユーザー一覧
                   <% end %>
-                  <%= link_to admin_genres_path, class: "nav-link text-light" do %>
+                  <%= link_to admin_genres_path, class: "nav-link text-secondary" do %>
                     <li class="fas fa-link"></li> ジャンル一覧
                   <% end %>
-                  <%= link_to admin_reviews_path, class: "nav-link text-light" do %>
+                  <%= link_to admin_reviews_path, class: "nav-link text-secondary" do %>
                     <i class="far fa-comment-dots" ></i> レビュー一覧
                   <% end %>
                 </ul>
                 <% elsif customer_signed_in? %>
-                  <%= link_to destroy_customer_session_path, {class: "nav-link text-light", method: :delete} do %>
+                  <%= link_to destroy_customer_session_path, {class: "nav-link text-secondary", method: :delete} do %>
                     <i class="fas fa-sign-out-alt" ></i> ログアウト
                   <% end %>
-                  <%= link_to root_path, class: "nav-link text-light" do %>
+                  <%= link_to root_path, class: "nav-link text-secondary" do %>
                     <i class="fas fa-home" ></i> トップページ
                   <% end %>
-                  <%= link_to public_my_page_path(), class: "nav-link text-light" do %>
+                  <%= link_to public_my_page_path(), class: "nav-link text-secondary" do %>
                     <i class="fas fa-user" ></i> マイページ
                   <% end %>
-                  <%= link_to public_customer_memos_path(current_customer.id), class: "nav-link text-light" do %>
+                  <%= link_to public_customer_memos_path(current_customer.id), class: "nav-link text-secondary" do %>
                     <i class="fas fa-pencil-alt"></i> メモ
                   <% end %>
                 <% else %>
-                  <%= link_to root_path, class: "nav-link text-light" do %>
+                  <%= link_to root_path, class: "nav-link text-secondary" do %>
                     <i class="fas fa-home" ></i> ホーム
                   <% end %>
-                  <%= link_to public_about_path, class: "nav-link text-light" do %>
+                  <%= link_to public_about_path, class: "nav-link text-secondary" do %>
                     <i class="fas fa-link" ></i> アバウト
                   <% end %>
-                  <%= link_to new_customer_registration_path, class: "nav-link text-light" do %>
+                  <%= link_to new_customer_registration_path, class: "nav-link text-secondary" do %>
                     <i class="fas fa-user-plus"></i> 新規登録
                   <% end %>
-                  <%= link_to new_customer_session_path, class: "nav-link text-light" do %>
+                  <%= link_to new_customer_session_path, class: "nav-link text-secondary" do %>
                     <i class="fas  fa-sign-in-alt"></i> ログイン
                   <% end %>
                 </ul>
@@ -70,9 +70,15 @@
           </div>
       </nav>
     </header>
-
-    <%#= render 'searches/form' %>
-
     <%= yield %>
+    <footer class="bg-warning pt-1 pb-4">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

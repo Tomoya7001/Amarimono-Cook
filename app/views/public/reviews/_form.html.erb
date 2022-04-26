@@ -18,9 +18,13 @@
     <%= f.label :rate, "良い", value: :"良い" %>
     <%= f.radio_button :score, :"非常に良い" %>
     <%= f.label :rate, "非常に良い", value: :"非常に良い" %>
-    <%= f.text_field :content, class: "textarea" %>
-    <%= f.submit "保存", class: "button mt-3" %>
-    <%= link_to "他のレビューを見る", public_cook_reviews_path(cook), class: "button light ml-3 mt-3" %>
+    <%= f.text_area :content, class: "textarea" %>
+    <div class="d-flex justify-content-end">
+      <%= link_to "一覧へ戻る", public_cooks_path, class: "button light ml-3 mt-3" %>
+      &nbsp;&nbsp;&nbsp;
+      <%= f.submit "保存", class: "button mt-3" %>
+      <%= link_to "他のレビューを見る", public_cook_reviews_path(cook), class: "button light ml-3 mt-3" %>
+    </div>
   <% end %>
 </div>
 

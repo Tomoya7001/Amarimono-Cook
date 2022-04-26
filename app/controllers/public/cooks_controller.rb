@@ -1,5 +1,7 @@
 class Public::CooksController < ApplicationController
+  before_action :authenticate_customer!, except: [:top, :about]
   before_action :set_q, only: [:index, :search]
+
 
   def index
     #@cook = Cook.find(params[:id])
@@ -49,7 +51,7 @@ class Public::CooksController < ApplicationController
       render :edit
     end
   end
-
+  #投稿を削除
   def destroy
     @cook = Cook.find(params[:id])
     @cook.destroy

@@ -42,16 +42,15 @@ Rails.application.routes.draw do
       collection do
         get 'search'
       end
-      resources :comments, only: [:create, :destroy]
+      resources :cook_comments, only: [:index, :create, :destroy]
       resource :favorites, only: [:create, :destroy]
       resources :reviews, only: [:index, :create, :show]
     end
     resources :genres, only: [:index, :show]
     resources :bookmarks, only: [:index]
-    # メモ用
-
 
     resources :customers, only: [:edit, :index, :update] do
+      resources :timelines, only: [:index, :create, :destroy]
       resources :memos, only: [:index, :create, :update, :destroy] do
       collection do
         delete 'destroy_all'

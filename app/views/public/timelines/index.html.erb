@@ -1,9 +1,8 @@
-<%= render 'search_form', q: @q, genres: @genres %>
 <div class="container">
   <div class="row mt-5">
     <div class="col-12">
       <div class="d-flex justify-content-center">
-        <h1><strong>レシピ一覧</strong></h1>
+        <h1><strong>タイムライン</strong></h1>
       </div>
     <br>
       <div class="row">
@@ -22,13 +21,13 @@
 　　　　　　<div class="list-comment">
               <% if cook.favorited_by?(current_customer) %>
                 <p class="h4">
-                  <%= link_to public_cook_favorites_path(cook), method: :delete do %>
+                  <%= link_to public_customer_timeline_path(id: current_customer.id, cook_id: cook.id), method: :delete do %>
                     ♥<%= cook.favorites.count %>
                   <% end %>
                 </p>
               <% else %>
                 <p class="h4">
-                  <%= link_to public_cook_favorites_path(cook), method: :post do %>
+                  <%= link_to public_customer_timelines_path(cook_id: cook.id), method: :post do %>
                     ♡<%= cook.favorites.count %>
                   <% end %>
                 </p>

@@ -8,7 +8,7 @@
   <table class="table table-bordered">
     <tr>
       <td class="bg-light"><%= f.label :料理名（レシピ名） %></td>
-      <td><%= f.text_field :cook_name %></td>
+      <td><%= f.text_field :cook_name, :size => "35x35" %></td>
     </tr>
     <tr>
       <td class="bg-light"><%= f.label :画像 %></td>
@@ -22,7 +22,9 @@
     </tr>
     <tr>
       <td class="bg-light"><%= f.label :作り方 %></td>
-      <td><%= f.text_area :introduction, :size => "30x10" %></td>
+      <td>
+        <%= f.text_area :introduction, class: "textarea", :size => "30x10" %>
+      </td>
     </tr>
   </table>
   <div class="row justify-content-center">
@@ -30,3 +32,4 @@
   </div>
   <% end %>
 </div>
+<br>

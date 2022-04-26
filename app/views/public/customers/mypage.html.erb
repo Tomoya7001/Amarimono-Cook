@@ -22,6 +22,9 @@
           <code style="font-size:2em"><i class="fas fa-plus-square"></i></code>
         <% end %>
       </div>
+      <div class="col">
+        <%= link_to "タイムライン", public_customer_timelines_path(@customer) %>
+      </div>
     </div>
     <div class="row">
       <br>
@@ -48,7 +51,7 @@
             <div class="col-6">
               <br>
               <div class="row">
-                <strong>[<%= cook.cook_name %>]</strong>
+                <strong>[<%= cook.cook_name %>]&nbsp;&nbsp;&nbsp;<%= link_to "編集", edit_public_cook_path(cook.id), class: "btn btn-sm btn-success" %></strong>
                 <%= link_to public_cook_path(cook) do %>
                   <% if cook.image.attached? %>
                     <%= image_tag cook.image, size: "300x300" %>
@@ -57,12 +60,11 @@
                   <% end %>
                 <% end %>
               </div>
-              <div class="row justify-content-center">
-                <%= link_to "編集", edit_public_cook_path(cook.id), class: "btn btn-md btn-success" %>
-              </div>
+              <br>
             </div>
           <% end %>
         </div>
       </section>
     </div>
   </div>
+  <br>

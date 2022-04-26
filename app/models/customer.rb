@@ -7,6 +7,8 @@ class Customer < ApplicationRecord
   has_one_attached :image
   # cookモデルと1:n
   has_many :cooks, dependent: :destroy
+  # cook_commentsモデルと1:n
+  has_many :cook_comments, dependent: :destroy
   # favoritesモデルと1:n
   has_many :favorites, dependent: :destroy
   # memosモデルと1:n

@@ -1,22 +1,22 @@
 <% if customers.exists? %>
-  <% customers.each do |customer| %>
-    <div class="row">
-      <table class="table table-bordered">
-        <thead class="thead-light">
-          <tr>
-            <th>ユーザー名</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>ユーザー名</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% customers.each do |customer| %>
           <tr>
             <td><%= customer.name %></td>
             <td><%= link_to "ページへ移動", public_path(customer) %></td>
           </tr>
-        </tbody>
-      </table>
-    </div>
-  <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 <% else %>
   <div calss="row">
     <div>ユーザーはいません</div>

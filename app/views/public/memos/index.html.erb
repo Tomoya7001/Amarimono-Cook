@@ -1,3 +1,6 @@
+<div class="d-flex justify-content-center">
+  <%= flash[:notice] %>
+</div>
 <div class="container">
   <%= form_with model: @memo, url: public_customer_memos_path, local: true do |f| %>
   <br>

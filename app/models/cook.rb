@@ -1,6 +1,7 @@
 class Cook < ApplicationRecord
   has_one_attached :image
-
+  # cookcommentsモデルと1:n
+  has_many :cook_comments, dependent: :destroy
   belongs_to :genre
   belongs_to :customer
   # favoritesモデルと1:n

@@ -1,9 +1,7 @@
 @import "bulma";
 
-body {
-  min-height: 100vh;
-  color: white;
-  font-family: sans-serif;
-}
-
 @import "public/homes";
+
+.shadow-sm {
+    background-color: #ffcc99
+}

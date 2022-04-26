@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <%= flash[:notice] %>
+</div>
+<br>
+<div class="container">
+  <%= form_with model: [@cook, @cook_comment], url: public_cook_cook_comments_path, class: 'form', local: true do |f| %>
+  <div class="d-flex justify-content-start">
+    <h1><strong>コメントを投稿</strong></h1>
+  </div>
+  <div>
+    <td>
+      <%= f.text_area :comment, placeholder: "コメントをここに書いてください。  ", class: "textarea" %>
+    </td>
+  </div>
+  <br>
+  <div class="d-flex justify-content-end">
+    <td>
+      <%= f.submit "送信する", class: "btn btn-success btn-sm" %>
+    </td>
+  </div>
+  <% end %>
+</div>
+
+<div class="container">
+  <br>
+  <div class="d-flex justify-content-center">
+    <h1><strong>コメント</strong></h1>
+  </div>
+  <br>
+  <% if @cook_comments.blank? %>
+    <div calss="row">
+      <div>コメントがありません。</div>
+    </div>
+  <% else %>
+    <div class="row">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>ユーザー</th>
+            <th>コメント</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cook.cook_comments.each do |cook_comment| %>
+            <tr>
+              <td>
+                <%= image_tag cook_comment.customer.get_image(50,50) %>
+                <%= cook_comment.customer.name %>
+              </td>
+              <td>
+                <%= cook_comment.comment %>
+                <p class="d-flex justify-content-end">
+                  <%= cook_comment.created_at.strftime('%Y/%m/%d') %>
+                  &nbsp;&nbsp;&nbsp;
+                  <% if cook_comment.customer == current_customer %>
+                    <%= link_to "削除", public_cook_cook_comment_path(cook_comment.cook, cook_comment), method: :delete, class: "button light" %>
+                  <% end %>
+                </p>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+  <div class="d-flex justify-content-end">
+    <%= link_to "詳細へ戻る", public_cook_path(@cook), class: "button light ml-3 mt-3" %>
+  </div>
+</div>
+<br>

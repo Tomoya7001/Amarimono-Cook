@@ -1,11 +1,15 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!, except: [:top, :about]
-  before_action :guest_customer, only: [:show, :index]
+  before_action :guest_customer, only: [:show, :index, :mypage]
 
   def show
-    @customers = Customer.all
     @customer = Customer.find(params[:id])
-    @cooks = @customer.cooks
+    if @customer == current_customer
+      redirect_to public_my_page_path
+    else
+      @customers = Customer.all
+      @cooks = @customer.cooks
+    end
   end
 
   def mypage
