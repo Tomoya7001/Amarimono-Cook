@@ -1,27 +1,8 @@
 <div class="container">
-  <div class="row mt-4">
-    <section class="new-items col-md-12">
-      <div class="d-flex justify-content-center">
-        <h1><strong>いいね一覧</strong></h1>
-      </div>
-      <div class="row">
-        <% @customer.favorites.each do |favorite| %>
-          <div class="col-6">
-            <br>
-            <div class="row">
-              <strong>[<%= favorite.cook.cook_name %>]</strong>
-              <%= link_to public_cook_path(favorite.cook.id) do %>
-                <% if favorite.cook.image.attached? %>
-                  <%= image_tag favorite.cook.image, size: "300x300" %>
-                <% else %>
-                  <%= image_tag "noimageフォト", size: "300x300" %>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </section>
+  <div class="d-flex justify-content-center">
+    <div class="row mt-3">
+      <h1><strong>いいね一覧</strong></h1>
+    </div>
   </div>
 </div>
-<br>
+<%= render "favorite", customer: @customer %>

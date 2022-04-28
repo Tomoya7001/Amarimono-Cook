@@ -3,48 +3,7 @@
   <div class="d-flex justify-content-center">
     <h1><strong>ユーザーページ</strong></h1>
   </div>
-  <div class="row">
-    <div class="col">
-      <%= image_tag @customer.get_image(150,150) %>
-    </div>
-    <div class="col">
-      <br>
-      <h4><strong><%= @customer.name %></strong></h4>
-    </div>
-  </div>
-  <div class="row">
-    <br>
-    <th><p class ="text-small">フォロー数: <%= @customer.followings.count %></p></th>
-  </div>
-  <div class="row">
-    <br>
-    <th><p class ="text-small">フォロワー数: <%= @customer.followers.count %></p></th>
-  </div>
+  <br>
+  <%= render "show_prof", customer: @customer %>
 </div>
-<div class="container">
-  <div class="row mt-4">
-    <section class="new-items col-md-12">
-      <div class="d-flex justify-content-center">
-        <h2><strong>この人の投稿</strong></h2>
-      </div>
-      <div class="row">
-        <% @cooks.each do |cook| %>
-          <div class="col-6">
-            <br>
-            <div class="row">
-              <strong>[<%= cook.cook_name %>]</strong>
-              <%= link_to public_cook_path(cook) do %>
-                <% if cook.image.attached? %>
-                  <%= image_tag cook.image, size: "300x300" %>
-                <% else %>
-                  <%= image_tag "noimageフォト", size: "300x300" %>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </section>
-  </div>
-</div>
-<br>
+<%= render "show_list", cooks: @cooks %>

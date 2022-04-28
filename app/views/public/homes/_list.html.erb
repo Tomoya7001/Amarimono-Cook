@@ -1,0 +1,35 @@
+<div class="container">
+<br>
+  <div class="d-flex justify-content-center">
+    <div class="row">
+      <% cooks.each do |cook| %>
+        <div class="flex-box">
+          <div>
+            <ul>
+              <table class="table table-borderless">
+                <tr>
+                  <td class="h5 d-flex justify-content-center bg-warning">
+                    <strong>
+                      [<%= cook.cook_name %>]
+                    </strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="icon">
+                    <%= link_to public_cook_path(cook) do %>
+                      <% if cook.image.attached? %>
+                        <%= image_tag cook.image, size: "250x250" %>
+                      <% else %>
+                        <%= image_tag "noimageフォト", size: "250x250" %>
+                      <% end %>
+                    <% end %>
+                  </td>
+                </tr>
+              </table>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

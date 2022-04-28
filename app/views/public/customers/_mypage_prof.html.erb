@@ -1,0 +1,51 @@
+<div class="d-flex justify-content-center">
+  <table width="93%">
+    <tbody>
+      <tr>
+        <th>
+          <%= image_tag customer.get_image(250,250), class: "mt-3 rounded-circle"; %>
+        </th>
+        <th>
+          <br>
+          <br>
+          <h3><strong>&nbsp;<%= customer.name %></strong></h3>
+        </th>
+        <th></th>
+        <th></th>
+        <th>
+          <%= link_to public_customers_path, class: "nav-link text-dark, button light ml-1 mt-1" do %>
+            <i class="far fa-heart"></i>&nbsp;いいね一覧
+          <% end %>
+
+          <%= link_to public_customer_timelines_path(customer), class: "nav-link text-dark, button light ml-1 mt-3" do %>
+            <i class="fas fa-history"></i>&nbsp;タイムライン
+          <% end %>
+        </th>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <h5>フォロー数 : <%= link_to customer.followings.count, public_customer_followings_path(customer) %></h5>
+        </td>
+        <td></td>
+        <td class="strong">
+          <%= link_to new_public_cook_path, class: "nav-link text-dark, button btn-primary ml-1 mt-1" do %>
+            <i class="far fa-plus-square"></i>&nbsp; 料理を投稿する
+          <% end %>
+        </td>
+        <td>
+          <%= link_to edit_public_customer_path(current_customer), class: "nav-link text-dark, button btn-success ml-3 mt-1" do %>
+            <i class="fas fa-user-edit"></i>&nbsp;プロフィール編集
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <h5>フォロワー数 : <%= link_to customer.followers.count, public_customer_followers_path(customer) %></h5>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,42 +1,8 @@
 <div class="container">
-  <div class="row mt-5">
-    <div class="col-12">
-      <div class="d-flex justify-content-center">
-        <h1><strong>タイムライン</strong></h1>
-      </div>
-    <br>
-      <div class="row">
-        <% @cooks.each do |cook| %>
-          <div class="col-4">
-            <p>
-              [<%= cook.cook_name %>]
-            </p>
-            <%= link_to public_cook_path(cook) do %>
-              <% if cook.image.attached? %>
-                <%= image_tag cook.image, size: "200x200" %>
-              <% else %>
-                <%= image_tag "noimageフォト", size: "200x200" %>
-              <% end %>
-            <% end %>
-　　　　　　<div class="list-comment">
-              <% if cook.favorited_by?(current_customer) %>
-                <p class="h4">
-                  <%= link_to public_customer_timeline_path(id: current_customer.id, cook_id: cook.id), method: :delete do %>
-                    ♥<%= cook.favorites.count %>
-                  <% end %>
-                </p>
-              <% else %>
-                <p class="h4">
-                  <%= link_to public_customer_timelines_path(cook_id: cook.id), method: :post do %>
-                    ♡<%= cook.favorites.count %>
-                  <% end %>
-                </p>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      </div>
+  <div class="d-flex justify-content-center">
+    <div class="row mt-3">
+      <h1><strong>タイムライン</strong></h1>
     </div>
   </div>
 </div>
-<br>
+<%= render "public/cooks/list", cooks: @cooks %>

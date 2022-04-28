@@ -7,15 +7,15 @@
   <table class="table table-bordered">
     <tr>
       <td class="bg-light">投稿者</td>
-      <td>
-        <%= link_to @customer.name, public_path(@customer) %>
+      <td class="margin">
+        <font size="5"><%= link_to @customer.name, public_path(@customer) %></font>
         <% if @customer != current_customer %>
           <% if current_customer.following?(@customer) %>
-            <%= link_to public_customer_relationships_path(@customer.id), method: :delete, class: "nav-link text-dark" do %>
+            <%= link_to public_customer_relationships_path(@customer.id), method: :delete, class: "button light ml-4 mt-0" do %>
               <li class="fas fa-user-minus"></li> フォロー解除
             <% end %>
           <% else %>
-            <%= link_to public_customer_relationships_path(@customer.id), method: :post, class: "nav-link text-dark" do %>
+            <%= link_to public_customer_relationships_path(@customer.id), method: :post, class: "button light ml-4 mt-0" do %>
               <li class="fas fa-user-plus"></li> フォローする
             <% end %>
           <% end %>
@@ -42,12 +42,15 @@
     </tr>
     <tr>
       <td class="bg-light">作り方</td>
-      <td><%= @cook.introduction %></td>
+      <td>
+        <%= @cook.introduction %>
+        <br>
+      </td>
     </tr>
     <tr>
       <td class="bg-light">コメント</td>
       <td>
-        <p>コメント件数：<%= @cook.cook_comments.count %></p>
+        <p>コメント件数：<%= link_to @cook.cook_comments.count, public_cook_cook_comments_path(@cook) %></p>
         <%= link_to "コメントを書く", public_cook_cook_comments_path(@cook) %>
       </td>
     </tr>

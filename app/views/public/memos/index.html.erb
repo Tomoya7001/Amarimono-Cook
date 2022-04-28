@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center">
   <%= flash[:notice] %>
 </div>
-<div class="container">
+<div class="container bg2">
   <%= form_with model: @memo, url: public_customer_memos_path, local: true do |f| %>
   <br>
   <div class="d-flex justify-content-start">
@@ -9,11 +9,11 @@
   </div>
   <div class="d-flex justify-content-start">
     <div>
-      <div>
+      <div class="h4">
         <br>
         <td><%= f.label :メモ記入欄 %>&nbsp;&nbsp;&nbsp;</td>
         <td><%= f.text_field :name, placeholder: "メモ" %>&nbsp;&nbsp;&nbsp;</td>
-        <td><%= f.submit '追加', class: "btn btn-success btn-sm" %></td>
+        <td><%= f.submit '追加', class: "btn btn-success" %></td>
       </div>
     </div>
   </div>
@@ -48,8 +48,8 @@
         <tbody>
           <% @memos.each do |memo| %>
             <tr>
-              <td><%= memo.name %></td>
-              <td><%= button_to '買った', public_customer_memo_path(current_customer.id, memo.id), method: :delete, class: "btn btn-danger btn-sm" %></td>
+              <td class="col-11"><%= memo.name %></td>
+              <td align="center"><%= button_to '買った', public_customer_memo_path(current_customer.id, memo.id), method: :delete, class: "btn btn-danger btn-sm" %></td>
             </tr>
           <% end %>
         </tbody>
@@ -66,3 +66,4 @@
       </table>
     </div>
   </div>
+</div>

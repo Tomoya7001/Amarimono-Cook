@@ -7,6 +7,7 @@
   <div class="d-flex justify-content-start">
     <h1><strong>コメントを投稿</strong></h1>
   </div>
+  <br>
   <div>
     <td>
       <%= f.text_area :comment, placeholder: "コメントをここに書いてください。  ", class: "textarea" %>
@@ -44,7 +45,7 @@
           <% @cook.cook_comments.each do |cook_comment| %>
             <tr>
               <td>
-                <%= image_tag cook_comment.customer.get_image(50,50) %>
+                <%= image_tag cook_comment.customer.get_image(50,50), class:"mt-3 rounded-circle"; %>
                 <%= cook_comment.customer.name %>
               </td>
               <td>

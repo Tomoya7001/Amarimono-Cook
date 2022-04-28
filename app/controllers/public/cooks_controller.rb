@@ -29,7 +29,7 @@ class Public::CooksController < ApplicationController
 
   #投稿
   def new
-    @cook = Cook.new
+    @cook = Cook.new(introduction: "[材料名]\n・\n・\n・\n\n[作り方]\n・\n・\n・")
     @genres = Genre.all
   end
 
@@ -37,7 +37,7 @@ class Public::CooksController < ApplicationController
   def create
     @cook = Cook.new(cook_params)
     @cook.customer_id = current_customer.id
-    pp @cook.image
+    @cook.image
     @cook.save
     redirect_to public_cooks_path
   end

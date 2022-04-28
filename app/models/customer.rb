@@ -23,7 +23,8 @@ class Customer < ApplicationRecord
   # 一覧画面で利用
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
-
+  
+  # ユーザーネームが2文字より多く20文字未満
   validates :name, uniqueness: true, length: { minimum:2,maximum:20 }
 
   # フォローしたときの処理

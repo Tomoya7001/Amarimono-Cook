@@ -1,3 +1,6 @@
+<div class="d-flex justify-content-center">
+  <%= flash[:notice] %>
+</div>
 <br>
 <div class="d-flex justify-content-center">
   <h1>管理者用ログイン</h1>
@@ -5,7 +8,7 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="d-flex justify-content-center">
     <div>
-      <table class="table table-borderless">
+      <table class="table table-borderless color-devise">
         <tr>
           <div class="field">
             <th class="col-5"><%= f.label :メールアドレス %></th>

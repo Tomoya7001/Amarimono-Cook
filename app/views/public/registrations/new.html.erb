@@ -1,68 +1,70 @@
-<div class="d-flex justify-content-center">
-  <%= flash[:notice] %>
-</div>
-<div class="container">
-<br>
-<div class="d-flex justify-content-center">
-  <h1>新規登録</h1>
-</div>
-  <%= form_with model: @customer, url: customer_registration_path do |f| %>
-    <div class="d-flex justify-content-center">
-      <div>
-        <table class="table table-borderless">
-          <%= render "devise/shared/error_messages", resource: resource %>
-          <tr>
-            <div class="field">
-              <th class="col-5"><%= f.label :ユーザーネーム %></th>
-              <td class="col-5"><%= f.text_field :name, :size => "35x35" %></td>
-            </div>
-          </tr>
-          <tr>
-            <div class="field">
-              <th class="col-5"><%= f.label :メールアドレス%></th>
-              <td class="col-5"><%= f.email_field :email, autofocus: true, autocomplete: "email", :size => "35x35" %></td>
-            </div>
-          </tr>
-          <tr>
-            <div class="field">
-              <th class="col-5"><%= f.label :パスワード %>
-                <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> 文字以上)</em>
-                <% end %><br />
+<div class="color-devise">
+  <div class="d-flex justify-content-center">
+    <%= flash[:notice] %>
+  </div>
+  <div class="container">
+  <br>
+  <div class="d-flex justify-content-center">
+    <h1>新規登録</h1>
+  </div>
+    <%= form_with model: @customer, url: customer_registration_path do |f| %>
+      <div class="d-flex justify-content-center">
+        <div>
+          <table class="table table-borderless color-devise">
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <tr>
+              <div class="field">
+                <th class="col-5"><%= f.label :ユーザーネーム %></th>
+                <td class="col-5"><%= f.text_field :name, :size => "35x35" %></td>
+              </div>
+            </tr>
+            <tr>
+              <div class="field">
+                <th class="col-5"><%= f.label :メールアドレス%></th>
+                <td class="col-5"><%= f.email_field :email, autofocus: true, autocomplete: "email", :size => "35x35" %></td>
+              </div>
+            </tr>
+            <tr>
+              <div class="field">
+                <th class="col-5"><%= f.label :パスワード %>
+                  <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> 文字以上)</em>
+                  <% end %><br />
+                </th>
+                <td class="col-5">
+                  <%= f.password_field :password, autocomplete: "new-password", :size => "35x35" %>
+                </td>
+              </div>
+            </tr>
+            <tr>
+              <div class="field">
+                <th class="col-5"><%= f.label :パスワード（確認） %></th>
+                <td class="col-5"><%= f.password_field :password_confirmation, autocomplete: "new-password", :size => "35x35" %></td>
+              </div>
+            </tr>
+              <th></th>
+              <div class="actions">
+                <th class="col-5">
+                  <div class="actions">
+                    <%= f.submit "新規登録", class: "btn btn-success btn-lg" %>
+                  </div>
+                </th>
+              </div>
+            </tr>
+            <tr>
+              <th>
+                <%= render "public/shared/links" %>
               </th>
-              <td class="col-5">
-                <%= f.password_field :password, autocomplete: "new-password", :size => "35x35" %>
-              </td>
-            </div>
-          </tr>
-          <tr>
-            <div class="field">
-              <th class="col-5"><%= f.label :パスワード（確認） %></th>
-              <td class="col-5"><%= f.password_field :password_confirmation, autocomplete: "new-password", :size => "35x35" %></td>
-            </div>
-          </tr>
-            <th></th>
-            <div class="actions">
-              <th class="col-5">
-                <div class="actions">
-                  <%= f.submit "新規登録", class: "btn btn-success btn-lg" %>
-                </div>
+            </tr>
+            <tr>
+              <th>
+                管理者は<%= link_to "こちら", new_admin_session_path %>
               </th>
-            </div>
-          </tr>
-          <tr>
-            <th>
-              <%= render "public/shared/links" %>
-            </th>
-          </tr>
-          <tr>
-            <th>
-              管理者は<%= link_to "こちら", new_admin_session_path %>
-            </th>
-          </tr>
-        </table>
+            </tr>
+          </table>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  <br>
 </div>
-<br>

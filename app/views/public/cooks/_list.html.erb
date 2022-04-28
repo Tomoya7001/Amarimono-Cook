@@ -1,15 +1,8 @@
 <div class="container">
-  <div class="d-flex justify-content-center">
-    <div class="row mt-3">
-      <h1><strong>レシピ一覧</strong></h1>
-    </div>
-  </div>
-</div>
-<div class="container">
 <br>
   <div class="d-flex justify-content-center">
     <div class="row">
-      <% @cooks.each do |cook| %>
+      <% cooks.each do |cook| %>
         <div class="flex-box">
           <div>
             <ul>
@@ -53,12 +46,5 @@
       <% end %>
     </div>
   </div>
-  <div class="row d-flex justify-content-end">
-    <tr>
-      <td>
-        <%= link_to "一覧へ戻る", public_cooks_path, class: "nav-link text-dark, button light ml-3 mt-3" %>
-      </td>
-    </tr>
-  </div>
-  <br>
 </div>
+<br>

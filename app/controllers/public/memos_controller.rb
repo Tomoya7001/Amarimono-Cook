@@ -17,7 +17,7 @@ class Public::MemosController < ApplicationController
   def destroy
     @memo = Memo.find(params[:id])
     @memo.destroy
-    redirect_to public_customer_memos_path(current_customer.id), notice: 'メモを削除しました'
+    redirect_to public_customer_memos_path(current_customer.id), notice: '買いました'
   end
 
   def destroy_all

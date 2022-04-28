@@ -1,0 +1,41 @@
+<div class="container">
+<br>
+  <div class="d-flex justify-content-center">
+    <div class="row">
+      <% customer.favorites.each do |favorite| %>
+        <div class="flex-box">
+          <div>
+            <ul>
+              <table class="table table-borderless">
+                <tr>
+                  <td class="h5 d-flex justify-content-center bg-warning">
+                    <strong>[<%= favorite.cook.cook_name %>]</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="icon">
+                    <%= link_to public_cook_path(favorite.cook.id) do %>
+                      <% if favorite.cook.image.attached? %>
+                        <%= image_tag favorite.cook.image, size: "300x300" %>
+                      <% else %>
+                        <%= image_tag "noimageフォト", size: "300x300" %>
+                      <% end %>
+                    <% end %>
+                  </td>
+                </tr>
+              </table>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-end">
+    <tr>
+      <td>
+        <%= link_to "一覧へ戻る", public_cooks_path, class: "nav-link text-dark, button light ml-3 mt-3" %>
+      </td>
+    </tr>
+  </div>
+  <br>
+</div>

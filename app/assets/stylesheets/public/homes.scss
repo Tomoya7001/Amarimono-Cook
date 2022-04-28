@@ -1,4 +1,29 @@
 .hoge {
+  margin-bottom: 20px;
+  background-image: image-url('cook2.png');
+  background-position: top right;
+  background-size: 220px;
+  background-repeat: no-repeat;
+}
 
-  background-image: image-url('cook1.jpeg');
+.bg {
+  background-image: image-url('italian3.jpeg');
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg2 {
+  background-image: image-url('cooking.png');
+  background-position: center right;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.hoge2 {
+  margin-bottom: 20px;
+  background-image: image-url('cook4.png');
+  background-position: top right;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
