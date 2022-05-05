@@ -37,6 +37,16 @@
       </td>
     </tr>
     <tr>
+      <td class="bg-light">タグ</td>
+      <td class="rowtag">
+        <% @cook.tags.each do |tag| %>
+        <p class="tagname">
+          <%= tag.name %>
+        </p>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
       <td class="bg-light">ジャンル</td>
       <td><%= @cook.genre.name %></td>
     </tr>

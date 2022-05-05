@@ -19,3 +19,19 @@
   width: 250px;
   height: 250px;
 }
+.tagname {
+  background-color: #0099FF;
+  width: 90px;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 20px;
+  padding-top: 2px;
+  color: white;
+  text-align: center;
+}
+
+.rowtag {
+  display: flex;
+  flex-wrap: wrap;
+}

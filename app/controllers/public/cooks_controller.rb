@@ -38,8 +38,17 @@ class Public::CooksController < ApplicationController
     @cook = Cook.new(cook_params)
     @cook.customer_id = current_customer.id
     @cook.image
-    @cook.save
-    redirect_to public_cooks_path
+    if @cook.save
+      tags = Vision.get_image_data(@cook.image)
+      tags.each do |tag|
+        @cook.tags.create(name: tag)
+      end
+      redirect_to public_cooks_path
+    else
+      @cook = Cook.new(introduction: "[材料名]\n・\n・\n・\n\n[作り方]\n・\n・\n・")
+      @genres = Genre.all
+      render :new
+    end
   end
 
   #編集

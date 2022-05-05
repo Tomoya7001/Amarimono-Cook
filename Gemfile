@@ -64,11 +64,18 @@ end
 
 #binding.pry　これをコントローラーで使う
 gem 'pry-rails'
+
 # 検索機能
 gem 'ransack'
+
 # ゲストユーザーの制限
 gem 'cancancan'
+
 # レビュー機能
 gem 'bulma-rails'
+
 #レビュー★
 gem 'jquery-rails'
+
+# Cloud Vision API
+gem 'dotenv-rails'
