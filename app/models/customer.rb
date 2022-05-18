@@ -11,6 +11,8 @@ class Customer < ApplicationRecord
   has_many :cook_comments, dependent: :destroy
   # favoritesモデルと1:n
   has_many :favorites, dependent: :destroy
+  #ランキング機能
+  has_many :favorited_customers, through: :favorites, source: :cook
   # memosモデルと1:n
   has_many :memos, dependent: :destroy
   #reviewsモデルと1:n レビュー機能
@@ -23,7 +25,7 @@ class Customer < ApplicationRecord
   # 一覧画面で利用
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
-  
+
   # ユーザーネームが2文字より多く20文字未満
   validates :name, uniqueness: true, length: { minimum:2,maximum:20 }
 

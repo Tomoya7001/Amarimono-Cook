@@ -2,12 +2,14 @@ class Cook < ApplicationRecord
   has_one_attached :image
   # cookcommentsモデルと1:n
   has_many :cook_comments, dependent: :destroy
-
+  has_many :homes
   has_many :tags
   belongs_to :genre
   belongs_to :customer
   # favoritesモデルと1:n
   has_many :favorites, dependent: :destroy
+  #ランキング機能
+  has_many :favorited_customers, through: :favorites, source: :customer
   #reviewsモデルと1:n レビュー機能
   has_many :reviews, dependent: :destroy
 

@@ -27,3 +27,24 @@
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+.sidebar {
+  width:200px;
+  text-align:center;
+}
+
+.common-heading {
+  border-bottom: 8px solid #FF9872;
+  text-align: center;
+  line-height: 0.6;
+}
+
+.popular-text {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #f7f7f7;
+  margin-bottom: 5px;
+}
+
+article {
+  display:flex;
+}
