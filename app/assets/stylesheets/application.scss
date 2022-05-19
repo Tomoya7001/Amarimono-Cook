@@ -5,6 +5,7 @@
 @import "public/cooks";
 //customersのcssを利用
 @import "public/customers";
+@import 'swiper/swiper-bundle.min.css';
 
 .header {
   background-color: #FFA500;
@@ -12,6 +13,8 @@
 
 .footer {
   background-color: #FFA500;
+  position: absolute;
+  bottom: 0;
 }
 .shadow-sm {
   background-color: #ffcc99

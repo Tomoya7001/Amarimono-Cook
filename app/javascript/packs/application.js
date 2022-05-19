@@ -8,12 +8,14 @@ import Rails from "@rails/ujs"
 //import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-
 import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
+//swiper導入
+//import Swiper from 'swiper/swiper-bundle.esm.js';
+//import 'swiper/swiper-bundle.css';
 
 Rails.start()
 //Turbolinks.start()
@@ -21,3 +23,7 @@ ActiveStorage.start()
 
 window.$ = window.jQuery = require('jquery');
 require('packs/raty')
+
+//swiper導入
+//= require swiper/swiper-bundle.min.js
+//= require swiper.js

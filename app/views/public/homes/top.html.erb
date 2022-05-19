@@ -38,13 +38,7 @@
         <div class="col-lg-11">
           <div class="text-center m-2">
             <div>
-              <span><br>
-                <h1><strong>余り物Cook</strong></h1>
-                <br>
-                <h3><strong>このサイトでは、余り物の食材で</strong></h3>
-                <br>
-                <h3><strong>簡単な料理ができるレシピをお探しできます。</strong></h3>
-              </span>
+              <%= render "swiper" %>
             </div>
           </div>
         </div>
@@ -67,3 +61,25 @@
     </div>
   </div>
 </body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  
+  var swiper = new Swiper('.swiper', {
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+});
+</script>

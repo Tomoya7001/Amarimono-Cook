@@ -14,3 +14,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 #レビュー機能で追加
 Rails.application.config.assets.precompile += %w( reviews.js )
+
+#swiper導入
+Rails.application.config.assets.paths << Rails.root.join('node_modules')

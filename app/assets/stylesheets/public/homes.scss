@@ -1,8 +1,8 @@
 .hoge {
   margin-bottom: 20px;
-  background-image: image-url('cook2.png');
+  background-image: image-url('chef3.png');
   background-position: top right;
-  background-size: 220px;
+  background-size: 400px;
   background-repeat: no-repeat;
 }
 
@@ -22,9 +22,9 @@
 
 .hoge2 {
   margin-bottom: 20px;
-  background-image: image-url('cook4.png');
+  background-image: image-url('chef2.png');
   background-position: top right;
-  background-size: contain;
+  background-size: 260px;
   background-repeat: no-repeat;
 }
 
@@ -47,4 +47,29 @@
 
 article {
   display:flex;
+}
+
+.swiper {
+  width: 50%;
+  height: 50%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
 }
