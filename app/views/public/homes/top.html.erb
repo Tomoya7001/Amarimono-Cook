@@ -14,7 +14,7 @@
           <div class="text-center m-5">
             <!--サイドバー-->
             <div class="sidebar">
-              <h2 class="common-heading">ランキング</h2>
+              <h3 class="common-heading"><i class="fas fa-crown"></i> ランキング</h3>
               <div class="popular-text">
                 <table class="table table-bordered">
                   <% @rank.each.with_index(1) do |rank, i| %>
@@ -38,7 +38,8 @@
         <div class="col-lg-11">
           <div class="text-center m-2">
             <div>
-              <%= render "swiper" %>
+              <h1 class="rank-menu">人気のメニュー</h1>
+              <%= render "swiper", rank: @rank %>
             </div>
           </div>
         </div>
@@ -64,12 +65,12 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-  
+
   var swiper = new Swiper('.swiper', {
     spaceBetween: 30,
     centeredSlides: true,
     autoplay: {
-      delay: 2500,
+      delay: 3500,
       disableOnInteraction: false,
     },
     pagination: {
