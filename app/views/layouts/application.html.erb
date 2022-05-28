@@ -28,9 +28,6 @@
             <div class="navbar-collapse collapse" id="navbarNavDropdown" style="">
               <ul class="navbar-nav ml-auto text-right">
                 <% if admin_signed_in? %>
-                  <%= link_to destroy_admin_session_path, {class: "nav-link text-dark", method: :delete} do %>
-                    <li class="fas fa-sign-out-alt"></li> ログアウト
-                  <% end %>
                   <%= link_to admin_customers_path, class: "nav-link text-secondary" do %>
                     <li class="fas fa-users"></li> ユーザー一覧
                   <% end %>
@@ -40,10 +37,10 @@
                   <%= link_to admin_reviews_path, class: "nav-link text-secondary" do %>
                     <i class="far fa-comment-dots" ></i> レビュー一覧
                   <% end %>
-                <% elsif customer_signed_in? %>
-                  <%= link_to destroy_customer_session_path, {class: "nav-link text-secondary", method: :delete} do %>
-                    <i class="fas fa-sign-out-alt" ></i> ログアウト
+                  <%= link_to destroy_admin_session_path, {class: "nav-link text-dark", method: :delete} do %>
+                    <li class="fas fa-sign-out-alt"></li> ログアウト
                   <% end %>
+                <% elsif customer_signed_in? %>
                   <%= link_to root_path, class: "nav-link text-secondary" do %>
                     <i class="fas fa-home" ></i> トップページ
                   <% end %>
@@ -52,6 +49,9 @@
                   <% end %>
                   <%= link_to public_customer_memos_path(current_customer.id), class: "nav-link text-secondary" do %>
                     <i class="fas fa-pencil-alt"></i> メモ
+                  <% end %>
+                  <%= link_to destroy_customer_session_path, {class: "nav-link text-secondary", method: :delete} do %>
+                    <i class="fas fa-sign-out-alt" ></i> ログアウト
                   <% end %>
                 <% else %>
                   <%= link_to root_path, class: "nav-link text-secondary" do %>
