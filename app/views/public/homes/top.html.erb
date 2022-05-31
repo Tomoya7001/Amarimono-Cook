@@ -25,8 +25,8 @@
                         位
                       </td>
                       <td>
-                        <%#= link_to rank.cook_name, public_cook_path(@cook_id) %>
-                        <%= rank.cook_name %>
+                        <%= link_to rank.cook_name, public_cook_path(rank.id) %>
+                        <%#= rank.cook_name %>
                       </td>
                     </tr>
                   <% end %>
