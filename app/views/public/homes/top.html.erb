@@ -9,57 +9,51 @@
           <i class="far fa-user-circle"></i> ゲストログイン
         <% end %>
       </div>
-      <div class="row justify-content-end">
-        <div class="col-lg-1">
-          <div class="text-center m-5">
-            <!--サイドバー-->
-            <div class="sidebar">
-              <h3 class="common-heading"><i class="fas fa-crown"></i> ランキング</h3>
-              <div class="popular-text">
-                <table class="table table-bordered">
-                  <% @rank.each.with_index(1) do |rank, i| %>
-                    <tr>
-                      <td>
-                        第
-                        <%= i %>
-                        位
-                      </td>
-                      <td>
-                        <%= link_to rank.cook_name, public_cook_path(rank.id) %>
-                        <%#= rank.cook_name %>
-                      </td>
-                    </tr>
-                  <% end %>
-                </table>
-              </div>
-            </div>
+        <!--サイドバー-->
+      <div class="popular-text">
+        <div class="sidebar">
+          <h3 class="common-heading"><i class="fas fa-crown"></i> ランキング</h3>
+          <table class="table table-bordered">
+            <% @rank.each.with_index(1) do |rank, i| %>
+              <tr>
+                <td width="85">
+                  第
+                  <%= i %>
+                  位
+                </td>
+                <td>
+                  <%= link_to rank.cook_name, public_cook_path(rank.id) %>
+                  <%#= rank.cook_name %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+        <div class="text-center">
+          <h1 class="rank-menu"><i class="fas fa-utensils"></i> 人気のメニュー</h1>
+        </div>
+        <div class="swiper-center">
+          <%= render "swiper", rank: @rank %>
+        </div>
+      </div>
+      <!--新着料理-->
+      <div class="main">
+        <div class="d-flex justify-content-center">
+          <div class="row mt-3">
+            <h1><strong><i class="far fa-lightbulb"></i> 新着料理</strong></h1>
           </div>
         </div>
-        <div class="col-lg-11">
-          <div class="text-center m-2">
-            <div>
-              <h1 class="rank-menu"><i class="fas fa-utensils"></i> 人気のメニュー</h1>
-              <%= render "swiper", rank: @rank %>
-            </div>
-          </div>
+        <%= render "list", cooks: @cooks %>
+        <div class="row d-flex justify-content-end">
+          <tr>
+            <td>
+              <%= link_to "一覧ページを見る>>", public_cooks_path, class: "nav-link text-dark, button light ml-3 mt-3" %>
+            </td>
+          </tr>
         </div>
       </div>
-    <!--新着料理-->
-      <div class="d-flex justify-content-center">
-        <div class="row mt-3">
-          <h1><strong><i class="far fa-lightbulb"></i> 新着料理</strong></h1>
-        </div>
-      </div>
-      <%= render "list", cooks: @cooks %>
-      <div class="row d-flex justify-content-end">
-        <tr>
-          <td>
-            <%= link_to "一覧ページを見る>>", public_cooks_path, class: "nav-link text-dark, button light ml-3 mt-3" %>
-          </td>
-        </tr>
-      </div>
-      <br>
-    </div>
+    <br>
+  　</div>
   </div>
 </body>
 

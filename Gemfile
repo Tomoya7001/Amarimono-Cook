@@ -68,7 +68,6 @@ gem 'pry-rails'
 # 検索機能
 gem 'ransack'
 
-
 # レビュー機能
 gem 'bulma-rails'
 
