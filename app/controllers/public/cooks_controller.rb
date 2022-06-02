@@ -31,6 +31,7 @@ class Public::CooksController < ApplicationController
   def new
     @cook = Cook.new(introduction: "[材料名]\n・\n・\n・\n\n[作り方]\n・\n・\n・")
     @genres = Genre.all
+    #@genre = @cook.genre.build
   end
 
   #投稿データを保存する

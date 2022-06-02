@@ -13,6 +13,10 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
+//import "cocoon"
+//= require jquery
+//= require cocoon
+
 //swiper導入
 //import Swiper from 'swiper/swiper-bundle.esm.js';
 //import 'swiper/swiper-bundle.css';

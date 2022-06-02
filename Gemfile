@@ -76,3 +76,6 @@ gem 'jquery-rails'
 
 # Cloud Vision API
 gem 'dotenv-rails'
+
+# フォームを追加
+#gem 'cocoon'

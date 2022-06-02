@@ -18,6 +18,7 @@
       <td class="bg-light"><%= f.label :ジャンル %></td>
       <td>
         <%= f.collection_select :genre_id, @genres, :id, :name, include_blank: "--選択してください--"  %>
+        <%#= link_to_add_association "+フォームを追加", f, :genre %>
       </td>
     </tr>
     <tr>
