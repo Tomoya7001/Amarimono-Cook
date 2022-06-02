@@ -72,7 +72,7 @@ gem 'ransack'
 gem 'bulma-rails'
 
 #レビュー★
-gem 'jquery-rails'
+#gem 'jquery-rails'
 
 # Cloud Vision API
 gem 'dotenv-rails'
