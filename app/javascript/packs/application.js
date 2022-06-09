@@ -13,7 +13,6 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
-import 'packs/test'
 //import "cocoon"
 //= require jquery
 //= require cocoon
